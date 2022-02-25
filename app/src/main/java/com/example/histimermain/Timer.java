@@ -15,6 +15,7 @@ import java.util.Locale;
 //現在の課題
 public class Timer extends AppCompatActivity {
     private static final long START_TIME_IN_MILLIS = 1500000;//mTimeLeftInMillsを更新時に使用
+    private long mTimeLeftInMillis = 1500000;//カウントダウン変更変数
 
     private TextView mTextViewCountDown;//カウントダウンビュー
     private Button mButtonStartPause;//ストップボタン変数
@@ -25,7 +26,6 @@ public class Timer extends AppCompatActivity {
 
     private boolean mTimerRunning;//動いているかの判定
 
-    private long mTimeLeftInMillis = 1500000;//カウントダウン変更変数
 
 
     @Override
