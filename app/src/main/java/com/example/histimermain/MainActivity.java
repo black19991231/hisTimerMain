@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
+//レイアウトファイルにてフッターに背景画像（タイマーであれば時計の画像）を挿入する
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,8 +15,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     public void onTimerClick(View v){
         Intent intent = new Intent(MainActivity.this, Timer.class);
+        startActivity(intent);
+    }
+
+    public void onMemoClick(View v){
+        Intent intent = new Intent(MainActivity.this, Memo.class);
+        startActivity(intent);
+    }
+
+    public void onProjectClick(View v){
+        Intent intent = new Intent(MainActivity.this, Project.class);
         startActivity(intent);
     }
 

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HisTimerMain">
         <activity
+            android:name=".ProjectCreate"
+            android:exported="false" />
+        <activity
+            android:name=".MemoCreate"
+            android:exported="false" />
+        <activity
             android:name=".Statistics"
             android:exported="false" />
         <activity

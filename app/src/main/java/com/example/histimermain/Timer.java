@@ -9,9 +9,10 @@ import android.content.Intent;
 import android.widget.TextView;
 
 import java.util.Locale;
-
+//開始前　プロジェクトの選択、
+//終了後　まとめ　復習
 public class Timer extends AppCompatActivity {
-    private static final long START_TIME_IN_MILLIS = 600000;
+    private static final long START_TIME_IN_MILLIS = 1500000;//mTimeLeftInMillsを更新時に使用
 
     private TextView mTextViewCountDown;//カウントダウンビュー
     private Button mButtonStartPause;//ストップボタン変数
@@ -21,7 +22,7 @@ public class Timer extends AppCompatActivity {
 
     private boolean mTimerRunning;//動いているかの判定
 
-    private long mTimeLeftInMillis = 1500000;//カウントダウン時間設定
+    private long mTimeLeftInMillis = 1500000;//カウントダウン変更変数
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class Timer extends AppCompatActivity {
             }
         });
 
-        mButtonReset.setOnClickListener(new View.OnClickListener() {
+        mButtonReset.setOnClickListener(new View.OnClickListener() {//resetリスナ生成
             @Override
             public void onClick(View v) {
                 restTimer();//リセットタイマーメソッドが実行され、カウントダウンが初期の値に戻る
@@ -53,10 +54,10 @@ public class Timer extends AppCompatActivity {
         });
         updateCountDownText();//ビュー表示の更新（動き続けるのか、止まるのか、リセットされるのか）
     }
-    private void startTimer(){
-        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis,1000) {//(秒間,速さ※1000が通常)
+    private void startTimer(){//スタートに関するメソッド
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis,1000) {//(時間設定,速さ←1000が1秒)
             @Override
-            public void onTick(long millisUntilFinished) {
+            public void onTick(long millisUntilFinished) {//millisUntilFinishedにて経過時間の表示
                 mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();//ビュー表示の更新
             }
@@ -82,18 +83,18 @@ public class Timer extends AppCompatActivity {
         mButtonReset.setVisibility(View.VISIBLE);
     }
 
-    private void restTimer(){
+    private void restTimer(){//リセット画面
         mTimeLeftInMillis = START_TIME_IN_MILLIS;
-        //
-        mButtonReset.setVisibility(View.INVISIBLE);
-        mButtonStartPause.setVisibility(View.VISIBLE);
+        mButtonReset.setVisibility(View.INVISIBLE);//リセットボタンが出てくる
+        mButtonStartPause.setVisibility(View.VISIBLE);//スキップボタンが出てくる
+        updateCountDownText();//カウントダウンビュー更新
     }
 
-    private void updateCountDownText(){
-        int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
-        int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+    private void updateCountDownText(){//カウントダウンの更新
+        int minutes = (int) (mTimeLeftInMillis / 1000) / 60;//現在の分
+        int seconds = (int) (mTimeLeftInMillis / 1000) % 60;//現在の秒
 
-        String timerLeftFomatted = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
-        mTextViewCountDown.setText(timerLeftFomatted);
+        String timerLeftFomatted = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);//表示形式決め
+        mTextViewCountDown.setText(timerLeftFomatted);//mTextViewCountDownにてtimerLeftFomattedを都度代入する
     }
 }

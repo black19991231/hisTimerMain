@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/activity_memo.xml" value="0.254981884057971" />
         <entry key="app/src/main/res/layout/activity_project.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/activity_timer.xml" value="0.13728470111448834" />
       </map>
