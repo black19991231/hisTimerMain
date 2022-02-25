@@ -11,18 +11,22 @@ import android.widget.TextView;
 import java.util.Locale;
 //開始前　プロジェクトの選択、
 //終了後　まとめ　復習
+
+//現在の課題
 public class Timer extends AppCompatActivity {
     private static final long START_TIME_IN_MILLIS = 1500000;//mTimeLeftInMillsを更新時に使用
 
     private TextView mTextViewCountDown;//カウントダウンビュー
     private Button mButtonStartPause;//ストップボタン変数
     private Button mButtonReset;//リセットボタン変数
+    private TextView mTextViewBeak;
 
     private CountDownTimer mCountDownTimer;//カウントダウン変数
 
     private boolean mTimerRunning;//動いているかの判定
 
     private long mTimeLeftInMillis = 1500000;//カウントダウン変更変数
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class Timer extends AppCompatActivity {
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
         mButtonStartPause = findViewById(R.id.button_start_pause);
         mButtonReset = findViewById(R.id.button_reset);
+        mTextViewBeak = findViewById(R.id.text_view_beak);
 
         Intent intent = this.getIntent();
 
@@ -64,7 +69,9 @@ public class Timer extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+
                 mTimerRunning = false;
+                breakTimer();
                 mButtonStartPause.setText("スタート");//mButtonStartPauseにて文字列をセット
                 mButtonStartPause.setVisibility(View.INVISIBLE);//mButtonStartPauseボタンの非表示
                 mButtonReset.setVisibility(View.VISIBLE);//mButtonResetボタンの表示
@@ -96,5 +103,12 @@ public class Timer extends AppCompatActivity {
 
         String timerLeftFomatted = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);//表示形式決め
         mTextViewCountDown.setText(timerLeftFomatted);//mTextViewCountDownにてtimerLeftFomattedを都度代入する
+    }
+
+    private void breakTimer(){
+        int mBreakTimer = 50000;
+
+        mTimeLeftInMillis = mBreakTimer;
+        mTextViewBeak.setVisibility(View.VISIBLE);
     }
 }
